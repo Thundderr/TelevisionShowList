@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">TelevisionShowList</string>
+    <string name="show_title_hint">Enter a name for the show.</string>
+    <string name="show_title_label">Title</string>
+    <string name="show_details_label">Details</string>
+    <string name="show_watched_label">Watched</string>
+    <string name="show_recommend_label">Recommend</string>
+    <string name="date_picker_title">Date of crime:</string>
+</resources>
