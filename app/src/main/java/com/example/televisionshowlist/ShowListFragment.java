@@ -2,6 +2,7 @@ package com.example.televisionshowlist;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +77,7 @@ public class ShowListFragment extends Fragment {
         public void bind(Show show) {
             mShow = show;
             mTitleTextView.setText(mShow.getTitle());
-            mDateTextView.setText(mShow.getDate().toString());
+            mDateTextView.setText(DateFormat.format("EEEE, MMM dd, yyyy", mShow.getDate()));
             mWatchedImageView.setVisibility(show.isWatched() ? View.VISIBLE : View.GONE);
             mRecommendImageView.setVisibility(show.isRecommend() ? View.VISIBLE : View.GONE);
         }

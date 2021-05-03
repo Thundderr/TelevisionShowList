@@ -22,9 +22,7 @@ public class ShowLab {
         mShows = new ArrayList<>();
         for (int i = 0; i < 100; i++) {
             Show show = new Show();
-            show.setTitle("Show #" + i);
-            show.setWatched(i % 2 == 0);
-            show.setRecommend(i % 4 == 0);
+            show.setTitle("Show Slot #" + i);
             mShows.add(show);
         }
     }

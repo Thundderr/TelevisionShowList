@@ -6,4 +6,5 @@
     <string name="show_watched_label">Watched</string>
     <string name="show_recommend_label">Recommend</string>
     <string name="date_picker_title">Date of crime:</string>
+    <string name="time_picker_title">Time of crime:</string>
 </resources>

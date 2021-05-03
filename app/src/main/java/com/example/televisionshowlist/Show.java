@@ -8,12 +8,14 @@ public class Show {
     private UUID mId;
     private String mTitle;
     private Date mDate;
+    private Date mTime;
     private boolean mWatched;
     private boolean mRecommend;
 
     public Show() {
         mId = UUID.randomUUID();
         mDate = new Date();
+        mTime = new Date();
     }
 
     public UUID getId() { return mId; }
@@ -26,6 +28,8 @@ public class Show {
         return mDate;
     }
 
+    public Date getTime() { return mTime; }
+
     public boolean isWatched() { return mWatched; }
 
     public boolean isRecommend() { return mRecommend; }
@@ -35,6 +39,8 @@ public class Show {
     public void setDate(Date date) {
         mDate = date;
     }
+
+    public void setTime(Date time) { mTime = time; }
 
     public void setTitle(String title) { mTitle = title; }
 

@@ -5,18 +5,22 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
+import java.sql.Time;
 import java.util.Date;
 import java.util.UUID;
 
@@ -24,14 +28,17 @@ public class ShowFragment extends Fragment {
 
     private static final String ARG_SHOW_ID = "show_id";
     private static final String DIALOG_DATE = "DialogDate";
+    private static final String DIALOG_TIME = "DialogTime";
 
     private static final int REQUEST_DATE = 0;
+    private static final int REQUEST_TIME = 1;
 
     private Show mShow;
     private EditText mTitleField;
     private Button mDateButton;
     private CheckBox mWatchedCheckBox;
     private CheckBox mRecommendCheckBox;
+    private Button mTimeButton;
 
     public static ShowFragment newInstance(UUID showId) {
         Bundle args = new Bundle();
@@ -92,6 +99,22 @@ public class ShowFragment extends Fragment {
             }
         });
 
+        mTimeButton = (Button) v.findViewById(R.id.show_time);
+        updateTime();
+        mTimeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getActivity(),
+                        "Changing time...", Toast.LENGTH_SHORT)
+                        .show();
+
+                FragmentManager manager = getFragmentManager();
+                TimePickerFragment dialog = TimePickerFragment.newInstance(mShow.getTime());
+                dialog.setTargetFragment(ShowFragment.this, REQUEST_TIME);
+                dialog.show(manager, DIALOG_TIME);
+            }
+        });
+
         mWatchedCheckBox = (CheckBox) v.findViewById(R.id.show_watched);
         mWatchedCheckBox.setChecked(mShow.isWatched());
         mWatchedCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -131,9 +154,19 @@ public class ShowFragment extends Fragment {
             mShow.setDate(date);
             updateDate();
         }
+
+        if (requestCode == REQUEST_TIME) {
+            Date time = (Date) data.getSerializableExtra(TimePickerFragment.EXTRA_TIME);
+            mShow.setTime(time);
+            updateTime();
+        }
     }
 
     private void updateDate() {
-        mDateButton.setText(mShow.getDate().toString());
+        mDateButton.setText(DateFormat.format("EEEE, MMM dd, yyyyy", mShow.getDate()));
+    }
+
+    private void updateTime() {
+        mTimeButton.setText(DateFormat.format("HH:mm aa", mShow.getTime()));
     }
 }

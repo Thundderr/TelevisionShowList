@@ -1,10 +1,14 @@
 Project Title: TelevisionShowList
 By: Aiden Smith
 
-The goal of this application is to create a list of shows so that you can track what you have watched.
-By clicking on each show, you will be able to add the specifics of a show onto your list. You will be able 
-to specify the name of the show, if you have finished watching it, and finally if you recommend the show 
-to other people. The latter two will result in icons popping up on the menu. When performing actions with 
-the application, toasts will pop up when certain parts of the app are triggered, such as clicking on a show on the list. 
-The application will also consist of icons to demonstrate the specifics of each checkbox in each show, having 
-icons for if you have finished a show as well as an icon for if you recommend it. 
+The goal of this application is to create a list of shows that you can edit to track what you have watched.
+Many parts of the application can be accessed through fragments, providing more insight into each component.
+Once a show is clicked, a menu will pop up that displays the details of the show, including name, date, and
+if you have watched and would recommend the show. The name can be altered in this menu, while watched/recommended
+can be toggled by check boxes within the menu. The date can be changed by clicking the date button and opening a
+date selector menu. Each of these actions will result in a toast describing the action you are performing. Once
+you exit to the main list, you will see that the show you edited will have either their name changed, or the icons
+for watched (a green circle) or recommended (a telephone) toggled if those options had been selected. The date will
+also be updated to what the user selected. Within each individual show menu, you can also select the time including
+hours, minutes, and AM/PM, although this will only show up within the show fragment. This app can be rotated within 
+any menu you want as well. The app also comes with a nice green/black theme that is present throughout each menu.
